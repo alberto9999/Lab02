@@ -1,6 +1,7 @@
 package it.polito.tdp.alien;
 
 import java.net.URL;
+
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,13 +39,35 @@ public class AlienController {
     	
 
     }
-
+   
     @FXML
     void doTranslate(ActionEvent event) {
     	
-    	String inserimento = txtInsert.getText().toLowerCase();
+     String inserimento = txtInsert.getText().toLowerCase();
+     boolean   bool=false;
+     String[] arrayIns= inserimento.split(" ");
+     String ins = "";
+     for(String s : arrayIns){
+    	 ins+=s;	 
+     }
+    	for( char c :ins.toCharArray()){
+        	if(((int)c<97||(int)c>122)&& c !='?'){
+        		bool=true;
+        		break;
+        	}
+    	}
+        	if(ins.contains("?")){
+        	int cont =0;
+        for(char c1 :ins.toCharArray())	{
+        	if(c1=='?')
+        		cont++;		
+        }
+        if(cont!=1)
+        	bool=false;
+        	}
+        
     	
-    	if(inserimento.matches(".*[a-zA-Z]*")==false){
+    	if(bool==false){
     	
     	String[] arrayLettura= inserimento.split(" ");
     
@@ -52,10 +75,10 @@ public class AlienController {
         	String parola= arrayLettura[0];
         	String result=dictionary.translateWord(parola);
         	txtResult.setText(result);
-        	
-        	
-        	
+    
         }
+        
+        
         if(arrayLettura.length==2){
         	String alien = arrayLettura[0];
         	String trad = arrayLettura[1];

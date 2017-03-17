@@ -1,4 +1,4 @@
-package it.polito.tdp.alien;
+/*package it.polito.tdp.alien;
 
 import java.util.*;
 
@@ -33,3 +33,4 @@ public class Word {
 	
 	
 }
+*/
